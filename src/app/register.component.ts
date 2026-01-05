@@ -26,9 +26,9 @@ import { AuthService } from './services/auth.service';
           <label>Tema</label>
           <select name="theme" ngModel required>
             <option value="default">Default</option>
-            <option value="gotham">Gotham</option>
-            <option value="atlantis">Atlantis</option>
-            <option value="troy">Troy</option>
+            <option value="gotham">🦇 Gotham</option>
+            <option value="atlantis">🌊 Atlantis</option>
+            <option value="troy">🏛️ Troy</option>
           </select>
         </div>
         <button class="primary" type="submit">Registracija</button>
