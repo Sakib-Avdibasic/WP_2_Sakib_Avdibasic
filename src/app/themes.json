@@ -1,0 +1,58 @@
+{
+  "default": {
+  "color-bg": "#f0f2f5",
+  "color-surface": "#e6e8eb",
+  "color-primary": "#1e3a8a",
+  "color-primary-light": "#3b82f6",
+  "color-accent": "#f59e0b",
+  "color-text": "#111827",
+  "color-muted": "#4b5563",
+  "radius": "12px",
+  "shadow": "0 8px 20px rgba(0,0,0,0.08)",
+  "input-border": "#cbd5e1",
+  "input-focus-shadow": "rgba(30,58,138,0.3)",
+  "bg-pattern": "repeating-linear-gradient(45deg, rgba(0,0,0,0.01) 1px, transparent 20px)"
+},
+  "gotham": {
+    "color-bg": "#0a0a0b",
+    "color-surface": "#1a1a1c",
+    "color-primary": "#ffce00",
+    "color-primary-light": "#ffd700",
+    "color-accent": "#ff3c00",
+    "color-text": "#e0e0e0",
+    "color-muted": "#888888",
+    "radius": "12px",
+    "shadow": "0 8px 20px rgba(0, 0, 0, 0.6)",
+    "input-border": "#444444",
+    "input-focus-shadow": "rgba(255, 206, 0, 0.3)",
+    "bg-pattern": "repeating-linear-gradient(45deg, transparent 1px, transparent 20px), url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Ctext x='10' y='120' font-size='60' opacity='0.03'%3E%F0%9F%A6%87%3C/text%3E%3C/svg%3E\")"
+  },
+  "atlantis": {
+    "color-bg": "#0f2f4f",
+    "color-surface": "#1e3f5e",
+    "color-primary": "#00d4ff",
+    "color-primary-light": "#66f0ff",
+    "color-accent": "#00ffa5",
+    "color-text": "#d0f0ff",
+    "color-muted": "#7aaac2",
+    "radius": "12px",
+    "shadow": "0 8px 20px rgba(0, 0, 0, 0.3)",
+    "input-border": "#1a6e96",
+    "input-focus-shadow": "rgba(0, 212, 255, 0.3)",
+    "bg-pattern": "repeating-linear-gradient(45deg, transparent 1px, transparent 20px), url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Ctext x='10' y='120' font-size='60' opacity='0.02'%3E%F0%9F%8C%8A%3C/text%3E%3C/svg%3E\")"
+  },
+  "troy": {
+    "color-bg": "#fdf4e3",
+    "color-surface": "#fff6e1",
+    "color-primary": "#b8860b",
+    "color-primary-light": "#ffd700",
+    "color-accent": "#c47f0b",
+    "color-text": "#5c4033",
+    "color-muted": "#8b6d5c",
+    "radius": "12px",
+    "shadow": "0 8px 20px rgba(0, 0, 0, 0.2)",
+    "input-border": "#d4b16a",
+    "input-focus-shadow": "rgba(184, 134, 11, 0.3)",
+    "bg-pattern": "repeating-linear-gradient(45deg, transparent 1px, transparent 20px), url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Ctext x='10' y='120' font-size='60' opacity='0.03'%3E%F0%9F%8F%9B%EF%B8%8F%3C/text%3E%3C/svg%3E\")"
+  }
+}

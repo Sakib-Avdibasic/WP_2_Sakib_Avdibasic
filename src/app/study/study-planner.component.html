@@ -1,0 +1,88 @@
+<a routerLink="/dashboard" class="back-link">← Nazad na kontrolnu tablu</a>
+
+<section class="page study-planner" [ngClass]="currentTheme">
+  <h1>Planer učenja</h1>
+
+  <div class="top">
+    <div class="card form-card">
+      <h2>Dodaj sesiju učenja</h2>
+
+      <div class="grid">
+        <div class="form-group">
+          <label>Predmet</label>
+          <input type="text" [(ngModel)]="subject" />
+        </div>
+
+        <div class="form-group">
+          <label>Tema</label>
+          <input type="text" [(ngModel)]="topic" />
+        </div>
+
+        <div class="form-group">
+          <label>Trajanje (minute)</label>
+          <input type="number" min="15" step="15" [(ngModel)]="duration" />
+        </div>
+      </div>
+
+      <button class="primary" (click)="addTask()">Dodaj u plan</button>
+    </div>
+
+    <div class="stats">
+      <div class="stat-card">
+        <span>Ukupno planirano</span>
+        <strong>{{ totalMinutes }} min</strong>
+      </div>
+
+      <div class="stat-card">
+        <span>Završeno</span>
+        <strong>{{ completedMinutes }} min</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="tasks">
+    <h2>Dnevni plan</h2>
+
+    <div class="task" *ngFor="let t of tasks">
+      <div class="left">
+        <input type="checkbox" [checked]="t.completed" (change)="toggle(t)" />
+        <div>
+          <strong>{{ t.subject }}</strong>
+          <div class="muted">{{ t.topic }}</div>
+        </div>
+      </div>
+
+      <div class="right">
+        <span>{{ t.duration }} min</span>
+        <button class="delete" (click)="remove(t.id)">×</button>
+      </div>
+    </div>
+
+    <p *ngIf="tasks.length === 0" class="empty">Još nema planiranih sesija.</p>
+  </div>
+
+  <div class="gotham-info" *ngIf="currentTheme === 'gotham'">
+    <h2>🦇 Edukativni kutak: Šišmiši</h2>
+    <p>
+      Šišmiši su noćni sisari poznati po eholokaciji – sposobnosti da se orijentišu pomoću zvuka.
+      Imaju ključnu ulogu u kontroli populacije insekata i očuvanju ekosistema.
+    </p>
+    <ul>
+      <li><a href="https://www.batcon.org" target="_blank"> Bat Conservation International </a></li>
+      <li>
+        <a
+          href="https://www.nationalgeographic.com/animals/mammals/facts/bats-facts/"
+          target="_blank"
+        >
+          National Geographic – činjenice o šišmišima
+        </a>
+      </li>
+      <li>
+        <a href="https://www.britannica.com/animal/bat-mammal" target="_blank">
+          Encyclopaedia Britannica – šišmiši
+        </a>
+      </li>
+    </ul>
+    <small>Gotham filozofija: znanje je oružje.</small>
+  </div>
+</section>

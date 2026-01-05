@@ -1,0 +1,40 @@
+<a routerLink="/dashboard" class="back-link">← Nazad na kontrolnu tablu</a>
+<section class="page mood-tracker" [ngClass]="currentTheme">
+  <h1>Pratitelj raspoloženja</h1>
+
+  <div class="card form-card">
+    <h2>Kako se osjećaš danas?</h2>
+
+    <div class="emotions">
+      <button *ngFor="let e of emotions" (click)="selectEmotion(e)" [class.active]="emotion === e">
+        {{ e | titlecase }}
+      </button>
+    </div>
+    <div class="quote" *ngIf="activeQuote && currentTheme === 'troy'">
+      <blockquote>{{ activeQuote }}</blockquote>
+    </div>
+
+    <textarea [(ngModel)]="note" placeholder="Želiš li dodati kratku bilješku?"></textarea>
+
+    <button class="primary" (click)="saveEntry()">Sačuvaj raspoloženje</button>
+  </div>
+
+  <div class="history card">
+    <h2>Historija</h2>
+
+    <div class="entry" *ngFor="let e of entries; let i = index">
+      <div class="header">
+        <strong>{{ e.date }}</strong>
+        <button class="delete" (click)="removeEntry(e.id)">✕</button>
+      </div>
+
+      <div class="row">
+        Raspoloženje: <strong>{{ e.emotion | titlecase }}</strong>
+      </div>
+
+      <p *ngIf="e.note">{{ e.note }}</p>
+    </div>
+
+    <p class="empty" *ngIf="entries.length === 0">Još nema zapisa.</p>
+  </div>
+</section>

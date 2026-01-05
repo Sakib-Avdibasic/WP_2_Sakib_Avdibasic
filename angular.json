@@ -5,6 +5,9 @@
     "packageManager": "npm"
   },
   "newProjectRoot": "projects",
+  "styles": [
+  "src/styles.scss"
+],
   "projects": {
     "WP_2_Sakib_Avdibasic": {
       "projectType": "application",

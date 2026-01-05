@@ -1,0 +1,79 @@
+<a routerLink="/dashboard" class="back-link">← Nazad na kontrolnu tablu</a>
+<div class="page sleep">
+  <h1>Pratitelj sna</h1>
+  <div class="top-row">
+    <div class="form-card">
+      <h2>Unos sna</h2>
+
+      <div class="grid">
+        <div class="form-group">
+          <label>Datum</label>
+          <input type="date" [ngModel]="date" (ngModelChange)="date = $event" />
+        </div>
+
+        <div class="form-group">
+          <label>Vrijeme spavanja</label>
+          <input type="time" [ngModel]="sleepTime" (ngModelChange)="sleepTime = $event" />
+        </div>
+
+        <div class="form-group">
+          <label>Vrijeme buđenja</label>
+          <input type="time" [ngModel]="wakeTime" (ngModelChange)="wakeTime = $event" />
+        </div>
+
+        <div class="form-group">
+          <label>Kvalitet sna (1–5)</label>
+          <input
+            type="range"
+            min="1"
+            max="5"
+            [ngModel]="quality"
+            (ngModelChange)="quality = +$event"
+          />
+        </div>
+      </div>
+
+      <div class="form-group full">
+        <label>Napomena</label>
+        <textarea rows="3" [ngModel]="notes" (ngModelChange)="notes = $event"></textarea>
+      </div>
+
+      <button class="primary" (click)="addEntry()">Sačuvaj unos</button>
+    </div>
+
+    <div class="stats">
+      <div class="stat-card">
+        <span>Prosječno trajanje sna</span>
+        <strong>{{ averageSleep }} h</strong>
+      </div>
+
+      <div class="stat-card balance" [class.negative]="sleepBalance != 0">
+        <span>Manjak / višak sna</span>
+
+        <strong class="tooltip" [attr.data-tooltip]="sleepBalanceInfo">
+          {{ sleepBalance }} h
+        </strong>
+      </div>
+    </div>
+  </div>
+  <div class="history">
+    <h2>Historija sna</h2>
+
+    <div class="entries">
+      <div class="entry" *ngFor="let e of entries; let i = index">
+        <div class="header">
+          <strong>{{ e.date }}</strong>
+          <button class="delete" (click)="remove(e.id)">×</button>
+        </div>
+
+        <div class="row">
+          <span>{{ e.sleepTime }} → {{ e.wakeTime }}</span>
+          <span>{{ e.duration }} h</span>
+          <span>⭐ {{ e.quality }}</span>
+        </div>
+
+        <p *ngIf="e.notes">{{ e.notes }}</p>
+      </div>
+    </div>
+  </div>
+</div>

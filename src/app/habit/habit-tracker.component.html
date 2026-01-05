@@ -1,0 +1,63 @@
+<a routerLink="/dashboard" class="back-link">← Nazad na kontrolnu tablu</a>
+<div class="page habit-tracker" [ngClass]="currentTheme">
+  <h1>Pratitelj navika</h1>
+
+  <div class="form-card">
+    <h2>Dodaj naviku</h2>
+
+    <div *ngIf="currentTheme === 'atlantis'" class="atlantis-suggestions">
+      <p class="label">Odaberi ili napiši:</p>
+      <div class="suggestion-buttons">
+        <button
+          *ngFor="let suggestion of atlantisSuggestions"
+          class="suggestion-btn"
+          (click)="newHabit = suggestion"
+        >
+          {{ suggestion }}
+        </button>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <input type="text" placeholder="Nova navika..." [(ngModel)]="newHabit" />
+      <button class="primary" (click)="addHabit()" [disabled]="loading">Dodaj</button>
+    </div>
+  </div>
+
+  <div class="summary" *ngIf="habits.length">
+    Danas završeno:
+    <strong>{{ getCompletedTodayCount() }} / {{ habits.length }}</strong>
+  </div>
+
+  <div class="habits">
+    <div class="habit-card" *ngFor="let habit of habits">
+      <div class="header">
+        <strong>{{ habit.name }}</strong>
+        <button class="delete" (click)="removeHabit(habit.id)">×</button>
+      </div>
+
+      <button
+        class="complete-btn"
+        [style.background]="isDoneToday(habit) ? habit.color : '#e5e7eb'"
+        (click)="toggleToday(habit)"
+      >
+        {{ isDoneToday(habit) ? 'Završeno danas' : 'Označi kao završeno' }}
+      </button>
+
+      <div class="stats">
+        <div>
+          Streak: <strong>{{ getStreak(habit) }}</strong>
+        </div>
+        <div>
+          Dosljednost: <strong>{{ getConsistency(habit) }}%</strong>
+        </div>
+        <div *ngIf="habit.completedDates.length">
+          Zadnji put:
+          <strong>
+            {{ habit.completedDates[habit.completedDates.length - 1] | date : 'd. MMMM y.' }}
+          </strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

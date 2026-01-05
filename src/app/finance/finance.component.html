@@ -1,0 +1,68 @@
+<a routerLink="/dashboard" class="back-link">← Nazad na kontrolnu tablu</a>
+
+<section class="page finance" [ngClass]="currentTheme">
+  <h1>Pratitelj finansija</h1>
+
+  <div class="top">
+    <div class="card form-card">
+      <h2>Dodaj transakciju</h2>
+
+      <div class="form-group">
+        <label>Naziv</label>
+        <input type="text" [(ngModel)]="name" placeholder="Naziv transakcije" />
+      </div>
+
+      <div class="form-group">
+        <label>Iznos (EUR)</label>
+        <input type="number" min="1" [(ngModel)]="amount" placeholder="Iznos" />
+      </div>
+
+      <div class="type-toggle">
+        <button type="button" [class.active]="type === 'expense'" (click)="type = 'expense'">
+          Rashod
+        </button>
+        <button type="button" [class.active]="type === 'income'" (click)="type = 'income'">
+          Prihod
+        </button>
+      </div>
+
+      <button class="primary" (click)="addTransaction()">Dodaj</button>
+    </div>
+
+    <div class="card suggested" *ngIf="currentTheme === 'gotham'">
+      <h2>Česte transakcije</h2>
+      <button class="mini" (click)="name = 'Gorivo za Batmobile'; amount = 100; type = 'expense'">
+        Gorivo za Batmobile
+      </button>
+      <button
+        class="mini"
+        (click)="name = 'Donacija za Arkham Asylum'; amount = 250; type = 'expense'"
+      >
+        Donacija za Arkham
+      </button>
+    </div>
+  </div>
+
+  <div class="card transactions">
+    <h2>Transakcije</h2>
+
+    <div
+      class="transaction"
+      *ngFor="let t of transactions"
+      [class.income]="t.amount > 0"
+      [class.expense]="t.amount < 0"
+    >
+      <span>{{ t.name }}</span>
+      <span>{{ t.amount | currency : 'EUR' : 'symbol' : '1.2-2' }}</span>
+      <button class="delete" (click)="remove(t.id)">×</button>
+    </div>
+
+    <div class="summary" *ngIf="transactions.length">
+      <p>Ukupno: {{ total | currency : 'EUR' : 'symbol' : '1.2-2' }}</p>
+      <p class="positive">Prihodi: {{ income | currency : 'EUR' : 'symbol' : '1.2-2' }}</p>
+      <p class="negative">Rashodi: {{ expenses | currency : 'EUR' : 'symbol' : '1.2-2' }}</p>
+    </div>
+
+    <p *ngIf="!transactions.length" class="empty">Nema transakcija.</p>
+  </div>
+</section>
